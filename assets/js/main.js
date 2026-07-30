@@ -1,5 +1,5 @@
 /**
-* Template Name: Personal - v2.1.0 (trimmed for leahfish portfolio)
+* Template Name: Personal - v2.1.0 (trimmed + continuous-scroll adaptation for leahfish portfolio)
 * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
@@ -7,65 +7,16 @@
 !(function($) {
 "use strict";
 
-// Nav Menu
 $(document).on('click', '.nav-menu a, .mobile-nav a', function(e) {
-if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-var hash = this.hash;
-var target = $(hash);
-if (target.length) {
-e.preventDefault();
-
-if ($(this).parents('.nav-menu, .mobile-nav').length) {
-$('.nav-menu .active, .mobile-nav .active').removeClass('active');
-$(this).closest('li').addClass('active');
-}
-
-if (hash == '#header') {
-$('#header').removeClass('header-top');
-$("section").removeClass('section-show');
-return;
-}
-
-if (!$('#header').hasClass('header-top')) {
-$('#header').addClass('header-top');
-setTimeout(function() {
-$("section").removeClass('section-show');
-$(hash).addClass('section-show');
-}, 350);
-} else {
-$("section").removeClass('section-show');
-$(hash).addClass('section-show');
-}
-
 if ($('body').hasClass('mobile-nav-active')) {
 $('body').removeClass('mobile-nav-active');
 $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
 $('.mobile-nav-overly').fadeOut();
 }
-
-return false;
-
-}
-}
 });
 
-// Activate/show sections on load with hash links
-if (window.location.hash) {
-var initial_nav = window.location.hash;
-if ($(initial_nav).length) {
-$('#header').addClass('header-top');
-$('.nav-menu .active, .mobile-nav .active').removeClass('active');
-$('.nav-menu, .mobile-nav').find('a[href="' + initial_nav + '"]').parent('li').addClass('active');
-setTimeout(function() {
-$("section").removeClass('section-show');
-$(initial_nav).addClass('section-show');
-}, 350);
-}
-}
-
-// Mobile Navigation
 if ($('.nav-menu').length) {
-var $mobile_nav = $('.nav-menu').clone().prop({
+var $mobile_nav = $('.nav-menu').first().clone().prop({
 class: 'mobile-nav d-lg-none'
 });
 $('body').append($mobile_nav);
@@ -92,7 +43,24 @@ $('.mobile-nav-overly').fadeOut();
 $(".mobile-nav, .mobile-nav-toggle").hide();
 }
 
-// Porfolio isotope and filter
+var $sections = $('section[id], header#header[id]');
+function updateActiveNav() {
+var scrollPos = $(window).scrollTop() + 200;
+var currentId = $sections.first().attr('id');
+$sections.each(function() {
+if ($(this).offset().top <= scrollPos) {
+currentId = $(this).attr('id');
+}
+});
+$('.nav-menu li, .mobile-nav li').removeClass('active');
+$('.nav-menu a[href="#' + currentId + '"], .mobile-nav a[href="#' + currentId + '"]').closest('li').addClass('active');
+}
+$(window).on('scroll', updateActiveNav);
+$(window).on('load', function() {
+updateActiveNav();
+if (window.AOS) { AOS.init({ duration: 700, once: true, offset: 80 }); }
+});
+
 $(window).on('load', function() {
 var portfolioIsotope = $('.portfolio-container').isotope({
 itemSelector: '.portfolio-item',
@@ -110,7 +78,6 @@ filter: $(this).data('filter')
 
 });
 
-// Initiate venobox (lightbox feature used in portofilo)
 $(document).ready(function() {
 $('.venobox').venobox();
 });
