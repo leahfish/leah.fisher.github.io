@@ -45,13 +45,18 @@ $(".mobile-nav, .mobile-nav-toggle").hide();
 
 var $sections = $('section[id], header#header[id]');
 function updateActiveNav() {
-var scrollPos = $(window).scrollTop() + 200;
+var scrollPos = $(window).scrollTop() + 150;
 var currentId = $sections.first().attr('id');
+var atBottom = ($(window).scrollTop() + $(window).height()) >= ($(document).height() - 4);
+if (atBottom) {
+currentId = $sections.last().attr('id');
+} else {
 $sections.each(function() {
 if ($(this).offset().top <= scrollPos) {
 currentId = $(this).attr('id');
 }
 });
+}
 $('.nav-menu li, .mobile-nav li').removeClass('active');
 $('.nav-menu a[href="#' + currentId + '"], .mobile-nav a[href="#' + currentId + '"]').closest('li').addClass('active');
 }
