@@ -1080,3 +1080,37 @@ color: #fff;
     transform: translateX(-50%);
   }
 }
+
+
+/*--------------------------------------------------------------
+# Header layout (photo beside intro)
+--------------------------------------------------------------*/
+.header-flex {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.header-flex .header-text {
+  flex: 1 1 340px;
+}
+.header-flex .header-photo {
+  flex: 0 0 auto;
+}
+#header .header-photo img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .header-flex {
+    justify-content: center;
+    text-align: center;
+  }
+  #header .header-photo img {
+    width: 220px;
+  }
+}
