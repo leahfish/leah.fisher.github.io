@@ -1101,7 +1101,9 @@ color: #fff;
 #header .header-photo img {
   width: 300px;
   max-width: 100%;
-  height: auto;
+  height: 400px;
+  object-fit: cover;
+  object-position: center 45%;
   border-radius: 12px;
 }
 
@@ -1112,5 +1114,6 @@ color: #fff;
   }
   #header .header-photo img {
     width: 220px;
+    height: 293px;
   }
 }
