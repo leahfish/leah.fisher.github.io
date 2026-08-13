@@ -1187,3 +1187,16 @@ color: #fff;
     margin: 0 auto; /* Centers it on mobile */
   }
 }
+/* ===== Header Photo Styling ===== */
+.header-photo {
+  background: transparent !important; /* Removes the black background from the container */
+}
+
+.header-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces the image to fill the box without squishing or stretching */
+  border: 4px solid #90e0ef; /* Adds the light blue border */
+  border-radius: 12px; /* Keeps your rounded corners smooth */
+  padding: 0; 
+}
