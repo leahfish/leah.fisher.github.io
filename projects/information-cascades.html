@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Information Cascades in High-Skill Labor Markets</title>
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Open+Sans:400,400i,600" rel="stylesheet">
+<style>
+body{background:#010e1b;color:#e6ecf5;font-family:"Open Sans",sans-serif;margin:0;padding:30px 25px;}
+h1{font-family:"Poppins",sans-serif;color:#12d640;font-size:24px;margin-bottom:4px;}
+h2{font-family:"Poppins",sans-serif;color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin:22px 0 8px 0;}
+p{line-height:1.7;font-size:15px;color:#cfd7e6;}
+.sub{color:#9fb0c9;font-size:13px;margin-bottom:20px;}
+.star{background:#09203a;border-radius:6px;padding:14px 18px;margin-bottom:12px;}
+</style>
+</head>
+<body>
+<h1>Information Cascades in High-Skill Labor Markets</h1>
+<div class="sub">ECON 510, University of North Carolina at Chapel Hill &middot; Co-authored with a four-person team &middot; Spring 2026</div>
+<div class="star"><h2>Situation</h2><p>The entry-level job market has tightened sharply. Unemployment for college graduates aged 22 to 27 reached 5.6% at the end of 2025, well above its typical 4%. Handshake reported job postings down more than 16% year over year with applications per posting up 26%, and the World Economic Forum found that 88% of companies now use AI to screen candidates. Under that volume, recruiters increasingly lean on whatever is fastest to read: where a candidate has worked before. That creates an economic puzzle. Firms cannot observe a candidate&rsquo;s actual productivity at the moment of hiring, so they substitute indirect signals such as school, prior employer, and previous offers. If every firm does this, no individual firm is behaving irrationally, yet the market as a whole may stop evaluating ability at all.</p></div>
+<div class="star"><h2>Task</h2><p>Build a formal model of hiring under asymmetric information and determine whether rational reliance on peer hiring decisions can systematically distort worker-firm matching. Specifically: identify the point at which a firm abandons its own private assessment of a candidate.</p></div>
+<div class="star"><h2>Action</h2><p>We constructed a two-type model with high- and low-quality workers split evenly across the population, and high- and low-quality firms with different hiring standards. Each firm receives a private signal about a candidate, reflecting information from interviews, cover letters, and materials, that is correct with probability 3/5. Each firm also observes the candidate&rsquo;s two most recent employers, which is what a resume conveys in practice. Applying information cascade theory, we traced Bayesian posteriors across sequential hiring rounds. A key asymmetry emerged early. Because high-quality firms hire only above a 50% threshold, a hire by a high-quality firm reveals its private signal with certainty, while a non-hire does not. Positive information propagates cleanly through the market; negative information does not. We then defined a cascade precisely, as a firm&rsquo;s decision reflecting prior actions rather than its own signal, and solved for the conditions producing one.</p></div>
+<div class="star"><h2>Result</h2><p>The cascade threshold sits at two prior high-quality hires. A candidate hired once by a high-quality firm, then observed emitting a low signal, is correctly passed over: the posterior falls to exactly 1/2 and the firm follows its own information. But after two such hires, a third firm receiving a low private signal computes a posterior of 18/30 and hires anyway with 60% probability. At that point the firm&rsquo;s own assessment has been overridden by the crowd. The consequences compound. Hiring comes to reflect prestige rather than productivity, generating matches that are neither efficient nor stable. Blocking pairs form not because information is unavailable, but because the cascade prevents it from being used. Skilled workers from non-target schools or without prestigious early experience are screened out before ability is ever assessed, producing path-dependent careers in which a first offer shapes a worker&rsquo;s market value for years regardless of what they can actually do. We argue that mechanisms surfacing true ability, including structured skills testing, standardized assessments, and blind resume review, can interrupt the cascade and restore more efficient matching. We also note that AI screening tools may accelerate the problem rather than solve it: when every firm&rsquo;s algorithm searches for the same prestige markers, the independent private signals that would otherwise break a cascade disappear.</p></div>
+<div class="star"><h2>Limitations</h2><p>The model treats worker quality as fixed and binary, though skill develops over time, exists on a continuum, and is domain-specific. It assumes homogeneous worker preferences for prestige, when workers weigh location, culture, and work-life balance differently. And it imposes strictly sequential hiring, while real markets involve simultaneous offers and overlapping timelines that complicate what firms can observe about one another.</p></div>
+</body>
+</html>
