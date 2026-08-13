@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NBA Salary Prediction: Multiple Regression Analysis</title>
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Open+Sans:400,400i,600" rel="stylesheet">
+  <style>
+  body{background:#010e1b;color:#e6ecf5;font-family:"Open Sans",sans-serif;margin:0;padding:30px 25px;}
+h1{font-family:"Poppins",sans-serif;color:#12d640;font-size:24px;margin-bottom:4px;}
+h2{font-family:"Poppins",sans-serif;color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin:22px 0 8px 0;}
+p{line-height:1.7;font-size:15px;color:#cfd7e6;}
+.sub{color:#9fb0c9;font-size:13px;margin-bottom:20px;}
+.star{background:#09203a;border-radius:6px;padding:14px 18px;margin-bottom:12px;}
+</style>
+</head>
+  <body>
+  <h1>NBA Salary Prediction: Multiple Regression Analysis</h1>
+  <div class="sub">Wake Forest MSBA &middot; Statistical Thinking for Business Decision-Making &middot; Summer 2026</div>
+<div class="star"><h2>Situation</h2><p>NBA front offices commit tens of millions of dollars to individual contracts, but it isn't obvious which player attributes the market is actually paying for. Working with a dataset of 566 players, my team set out to test which measurable characteristics explain salary and which are noise.</p></div>
+<div class="star"><h2>Task</h2><p>Build a multiple linear regression model predicting player salary, refine it down to only statistically significant predictors, and interpret the results well enough to say something useful to a general manager.</p></div>
+  <div class="star"><h2>Action</h2><p>I began with a full model containing ten predictors spanning performance statistics, position, conference, age, and nationality. Working in Excel's Data Analysis Toolpak, I refined the model across six iterations, removing the single highest non-significant p-value at each step and documenting the rationale for every elimination: forward position first at p = 0.967, then US-born status, games played, conference, and finally rebounds per game. I then ran a correlation matrix on the surviving continuous predictors to test for multicollinearity, and made a deliberate choice to retain minutes per game and points per game despite a correlation of 0.87, on the grounds that each captures a distinct dimension of player value &mdash; opportunity versus scoring output &mdash; and that dropping either would discard information the other doesn't carry.</p></div>
+  <div class="star"><h2>Result</h2><p>The final four-predictor model explains 61.5% of the variance in player salary (adjusted R&sup2; = 0.615, F = 226.9), with every remaining predictor significant at p &lt; 0.001. Points per game is the dominant driver: each additional point per game is associated with roughly $1.79 million in salary, and each additional assist with $1.28 million. The most interesting finding was a counterintuitive one &mdash; minutes per game carried a negative coefficient of &minus;$423,347, which contradicts the obvious expectation that players who play more earn more. Rather than report it as a finding, I traced it to the 0.87 correlation with points per game and concluded the variable was absorbing residual variance unstably rather than reflecting a real relationship. The practical takeaway for a front office is that scoring and playmaking are the two reliable drivers of market value, while the position and minutes coefficients should not be used for contract decisions. With over a third of salary variance unexplained, factors outside the dataset &mdash; contract timing, cap constraints, injury history, draft position &mdash; likely account for much of the remainder.</p></div>
+</body>
+  </html>
