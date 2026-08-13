@@ -1117,3 +1117,31 @@ color: #fff;
     height: 293px;
   }
 }
+/* ===== About: Video Box ===== */
+.about-video-box {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(217,237,146,.25);
+  border-radius: 12px;
+  padding: 16px;
+  flex: 1 1 300px; /* Allows it to scale beside the At a Glance card */
+  max-width: 500px;
+}
+
+.about-video-box video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
+}
+
+/* Ensure they stack nicely on mobile screens */
+@media (max-width: 768px) {
+  #about .row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .about-video-box {
+    width: 100%;
+  }
+}
